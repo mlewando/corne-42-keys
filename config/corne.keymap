@@ -9,6 +9,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include "keys_pl_programmers.h"
 
+#define MO_TOG(layer) &mo_tog layer layer
+
 / {
     behaviors {
         bspc_del: backspace_delete {
