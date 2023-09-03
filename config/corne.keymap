@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include "keys_pl_programmers.h"
 
 #define MO_TOG(layer) &mo_tog layer layer
@@ -56,12 +57,12 @@
             bindings = <&sl>, <&tog>;
         };
 
-        symbol_layer_mod: symbol_layer_mod {
+        control_layer_mod: control_layer_mod {
             compatible = "zmk,behavior-mod-morph";
-            label = "symbol_layer_mod";
-            #binding-cells = <0>;
-            bindings = <MO_TOG(NAVI)>, <SL_TOG(SYMBOLS)>;
-            mods = <(MOD_LGUI|MOD_LSFT|MOD_RALT|MOD_RSFT)>;
+            label = "control_layer_mod";
+            #binding-cells = <1>;
+            bindings = <&kp>, <&tog SYMBOLS>;
+            mods = <(MOD_LSFT)>;
         };
         
     };
@@ -74,7 +75,7 @@
   &gresc   &kp PL_Q  &kp PL_W  &kp PL_E  &kp PL_R      &kp PL_T    &kp PL_Y  &kp PL_U  &kp PL_I  &kp PL_O  &kp PL_P  &bspc_del
   &kp TAB  &kp PL_A  &kp PL_S  &kp PL_D  &kp PL_F      &kp PL_G    &kp PL_H  &kp PL_J  &kp PL_K  &kp PL_L  &kp SEMI    &kp SQT
 &td_shift  &kp PL_Z  &kp PL_X  &kp PL_C  &kp PL_V      &kp PL_B    &kp PL_N  &kp PL_M  &kp COMMA  &kp DOT  &kp FSLH   &sk RALT
-                         &kp LCTRL  &symbol_layer_mod   &kp LEFT_GUI    &kp SPACE  MO_TOG(NUMPAD)   &kp RET
+                         &kp LCTRL  MO_TOG(NAVI)   &kp LEFT_GUI    &kp SPACE  MO_TOG(NUMPAD)   &kp RET
             >;
         };
 
@@ -90,7 +91,7 @@
         fn_navigation_layer {
             bindings = <
 &to 0   &kp F1        &kp F2        &kp F3      &kp F4   &none       &none     &none    &kp UP        &none   &none   &trans
-&trans  &kp F5        &kp F6        &kp F7      &kp F8   &none       &none  &kp LEFT    &kp DOWN  &kp RIGHT   &trans  &trans
+&trans  &kp F5        &kp F6        &kp F7      &control_layer_mod F8   &none       &none  &kp LEFT    &kp DOWN  &kp RIGHT   &trans  &trans
 &trans  &kp F9        &kp F10       &kp 11      &kp F12  &none       &none     &none    &none         &none   &trans  &trans
                                     &trans      &trans   &trans      &trans    SL_TOG(SYMBOLS)    &trans
             >;
@@ -107,10 +108,10 @@
 
         controol_layer {
             bindings = <
-&to 0   &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none
-&none   &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none
-&none   &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none
-                     &trans &trans &trans       &trans &trans &trans
+&to 0   &none         &none         &none         &none           &bt BT_CLR       &none  &none  &none  &none  &none  &none
+&none   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5       &none  &none  &none  &none  &none  &none
+&none   &none         &none         &out OUT_USB  &out OUT_BLE         &none       &none  &none  &none  &none  &none  &none
+                                                        &trans &trans &trans       &trans &trans &trans
             >;
         };
 
