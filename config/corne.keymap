@@ -10,6 +10,14 @@
 #include "keys_pl_programmers.h"
 
 #define MO_TOG(layer) &mo_tog layer layer
+#define SL_TOG(layer) &sl_tog layer layer
+
+#define BASE 0
+#define NUMPAD 1
+#define NAVI 2
+#define SYMBOLS 3
+#define CONTROL 4
+
 
 / {
     behaviors {
@@ -39,30 +47,25 @@
             bindings = <&mo>, <&tog>;
         };
 
-        td_layer_2: tap_dance_1 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "swith to symbol layer on double tap";
-            #binding-cells = <0>;
-            tapping-term-ms = <400>;
-            bindings = <MO_TOG(3)>, <&sl 2>;
-        };
+        sl_tog: behavior_sl_tog {
+            comaptible = "zmk,behavior-hold-tap";
+            label = "sl_tog";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&sl>, <&tog>;
+        }
     };
     
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
             bindings = <
-  &gresc   &kp PL_Q  &kp PL_W  &kp PL_E  &kp PL_R  &kp PL_T    &kp PL_Y  &kp PL_U  &kp PL_I  &kp PL_O  &kp PL_P  &bspc_del
-  &kp TAB  &kp PL_A  &kp PL_S  &kp PL_D  &kp PL_F  &kp PL_G    &kp PL_H  &kp PL_J  &kp PL_K  &kp PL_L  &kp SEMI    &kp SQT
-&td_shift  &kp PL_Z  &kp PL_X  &kp PL_C  &kp PL_V  &kp PL_B    &kp PL_N  &kp PL_M  &kp COMMA  &kp DOT  &kp FSLH   &sk RALT
-                         &kp LCTRL  &td_layer_2  &kp LEFT_GUI    &kp SPACE  MO_TOG(1)   &kp RET
+  &gresc   &kp PL_Q  &kp PL_W  &kp PL_E  &kp PL_R      &kp PL_T    &kp PL_Y  &kp PL_U  &kp PL_I  &kp PL_O  &kp PL_P  &bspc_del
+  &kp TAB  &kp PL_A  &kp PL_S  &kp PL_D  &kp PL_F      &kp PL_G    &kp PL_H  &kp PL_J  &kp PL_K  &kp PL_L  &kp SEMI    &kp SQT
+&td_shift  &kp PL_Z  &kp PL_X  &kp PL_C  &kp PL_V      &kp PL_B    &kp PL_N  &kp PL_M  &kp COMMA  &kp DOT  &kp FSLH   &sk RALT
+                         &kp LCTRL  MO_TOG(NAVI)   &kp LEFT_GUI    &kp SPACE  MO_TOG(NUMPAD)   &kp RET
             >;
         };
 
@@ -75,6 +78,15 @@
             >;
         };
 
+        fn_navigation_layer {
+            bindings = <
+&to 0   &kp F1        &kp F2        &kp F3      &kp F4   &none       &none     &none    &kp UP        &none   &none   &trans
+&trans  &kp F5        &kp F6        &kp F7      &kp F8   &none       &none  &kp LEFT    &kp DOWN  &kp RIGHT   &trans  &trans
+&trans  &kp F9        &kp F10       &kp 11      &kp F12  &none       &none     &none    &none         &none   &trans  &trans
+                                    &trans      &trans   &trans      &trans    SL_TOG(SYMBOLS)    &trans
+            >;
+        };
+
         symbols {
             bindings = <
 &to 0   &kp EXCL  &kp AT    &kp HASH  &kp DOLLAR  &kp PERCENT        &kp CARET  &kp AMPS   &kp ASTERISK  &kp LPAR        &kp RPAR     &trans
@@ -84,12 +96,12 @@
             >;
         };
 
-        fn_navigation_layer {
+        controol_layer {
             bindings = <
-&to 0   &kp F1        &kp F2        &kp F3      &kp F4   &none       &none     &none    &kp UP        &none   &none   &trans
-&trans  &kp F5        &kp F6        &kp F7      &kp F8   &none       &none  &kp LEFT    &kp DOWN  &kp RIGHT   &trans  &trans
-&trans  &kp F9        &kp F10       &kp 11      &kp F12  &none       &none     &none    &none         &none   &trans  &trans
-                                    &trans      &trans   &trans      &trans    &trans    &trans
+&to 0   &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none
+&none   &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none
+&none   &none  &none  &none  &none  &none       &none  &none  &none  &none  &none  &none
+                     &trans &trans &trans       &trans &trans &trans
             >;
         };
 
