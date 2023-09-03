@@ -60,8 +60,8 @@
         control_layer_mod: control_layer_mod {
             compatible = "zmk,behavior-mod-morph";
             label = "control_layer_mod";
-            #binding-cells = <1>;
-            bindings = <&kp>, <&tog SYMBOLS>;
+            #binding-cells = <0>;
+            bindings = <&kp F8>, <&tog SYMBOLS>;
             mods = <(MOD_LSFT)>;
         };
         
@@ -91,7 +91,7 @@
         fn_navigation_layer {
             bindings = <
 &to 0   &kp F1        &kp F2        &kp F3      &kp F4   &none       &none     &none    &kp UP        &none   &none   &trans
-&trans  &kp F5        &kp F6        &kp F7      &control_layer_mod F8   &none       &none  &kp LEFT    &kp DOWN  &kp RIGHT   &trans  &trans
+&trans  &kp F5        &kp F6        &kp F7      &control_layer_mod   &none       &none  &kp LEFT    &kp DOWN  &kp RIGHT   &trans  &trans
 &trans  &kp F9        &kp F10       &kp 11      &kp F12  &none       &none     &none    &none         &none   &trans  &trans
                                     &trans      &trans   &trans      &trans    SL_TOG(SYMBOLS)    &trans
             >;
