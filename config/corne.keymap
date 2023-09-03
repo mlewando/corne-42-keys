@@ -62,10 +62,9 @@
   &gresc   &kp PL_Q  &kp PL_W  &kp PL_E  &kp PL_R  &kp PL_T    &kp PL_Y  &kp PL_U  &kp PL_I  &kp PL_O  &kp PL_P  &bspc_del
   &kp TAB  &kp PL_A  &kp PL_S  &kp PL_D  &kp PL_F  &kp PL_G    &kp PL_H  &kp PL_J  &kp PL_K  &kp PL_L  &kp SEMI    &kp SQT
 &td_shift  &kp PL_Z  &kp PL_X  &kp PL_C  &kp PL_V  &kp PL_B    &kp PL_N  &kp PL_M  &kp COMMA  &kp DOT  &kp FSLH   &sk RALT
-                         &kp LCTRL  MO_TOG(3)  &kp LEFT_GUI    &kp SPACE  MO_TOG(1)   &kp RET
+                         &kp LCTRL  &td_layer_2  &kp LEFT_GUI    &kp SPACE  MO_TOG(1)   &kp RET
             >;
         };
-
 
         numad {
             bindings = <
