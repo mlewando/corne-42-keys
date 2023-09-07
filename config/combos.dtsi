@@ -10,6 +10,13 @@
     combos {
         compatible = "zmk,combos";
 
+        combo_mouse {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&smart_mouse>;
+            key-positions = <LT3 LT1>;
+            COMBO_HOOK
+        };
+
         // left hand symbols
         combo_exclamation {
             timeout-ms = <COMBO_TERM_SLOW>;
