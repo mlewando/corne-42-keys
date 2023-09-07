@@ -35,28 +35,28 @@
             timeout-ms = <COMBO_TERM_SLOW>;
             bindings = <&kp PERCENT>;
             key-positions = <LT0 LM0>;
-        }
+        };
 
         combo_grave {
             timeout-ms = <COMBO_TERM_SLOW>;
             bindings = <&kp GRAVE>;
             key-positions = <LM3 LB3>;
-        }
+        };
         combo_backslash {
             timeout-ms = <COMBO_TERM_SLOW>;
             bindings = <&kp BACKSLASH>;
             key-positions = <LM2 LB2>;
-        }
+        };
         combo_equal {
             timeout-ms = <COMBO_TERM_SLOW>;
             bindings = <&kp EQUAL>;
             key-positions = <LM1 LB1>;
-        }
+        };
         combo_tilde {
             timeout-ms = <COMBO_TERM_SLOW>;
             bindings = <&kp TILDE>;
             key-positions = <LM0 LB0>;
-        }
+        };
 
         // right hand symbols
         combo_caret {
