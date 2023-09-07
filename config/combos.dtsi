@@ -165,14 +165,14 @@
         };
         combo_lbrc {
             timeout-ms = <COMBO_TERM_FAST>;
-            bindings = <&kp LBRT>;
+            bindings = <&kp LBRC>;
             key-positions = <RB1 RB2>;
             layers = <NAVI>;
             COMBO_HOOK
         };
         combo_rbrc {
             timeout-ms = <COMBO_TERM_FAST>;
-            bindings = <&kp RBRT>;
+            bindings = <&kp RBRC>;
             key-positions = <RB2 RB3>;
             layers = <NAVI>;
             COMBO_HOOK
