@@ -62,7 +62,7 @@
             #binding-cells = <0>;
             bindings = <&sk LSHFT>, <&caps_word>;
             mods = <(MOD_LSFT)>;
-        }
+        };
 
         mo_tog: behavior_mo_tog {
             compatible = "zmk,behavior-hold-tap";
