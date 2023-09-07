@@ -148,7 +148,7 @@
         };
 
         smart_mouse: smart_mouse {
-            compatible = "zmk,behavior-tri_state";
+            compatible = "zmk,behavior-tri-state";
             label = "smart_mouse";
             #binding-cells = <0>;
             bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
