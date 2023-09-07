@@ -98,7 +98,7 @@
             quick-tap-ms = <QUICK_TAP_MS>; 
             global-quick-tap-ms = <150>; 
             bindings = <&kp>, <&lpar_lt>; 
-            hold-trigger-key-positions = KEYS_L THUMBS; 
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release; 
         };
 
@@ -111,7 +111,7 @@
             quick-tap-ms = <QUICK_TAP_MS>; 
             global-quick-tap-ms = <150>; 
             bindings = <&kp>, <&rpar_gt>; 
-            hold-trigger-key-positions = KEYS_L THUMBS; 
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release; 
         };
     };
