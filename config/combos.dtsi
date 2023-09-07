@@ -16,6 +16,30 @@
             key-positions = <LT3 LT1>;
             COMBO_HOOK
         };
+        combo_esc {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp ESC>;
+            key-positions = <LT3 LT2>;
+            COMBO_HOOK
+        };
+        combo_cut {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp LC(X)>;
+            key-positions = <LT3 LT1>;
+            COMBO_HOOK
+        };
+        combo_copy {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp LC(INS)>;
+            key-positions = <LB3 LB2>;
+            COMBO_HOOK
+        };
+        combo_paste {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp LS(INS)>;
+            key-positions = <LB2 LB1>;
+            COMBO_HOOK
+        };
 
         // left hand symbols
         combo_exclamation {
