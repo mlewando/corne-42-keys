@@ -125,24 +125,56 @@
             timeout-ms = <COMBO_TERM_FAST>;
             bindings = <&hmr_lpar_lt RS(LCTRL) 0>;
             key-positions = <RM1 RM2>;
+            layers = <BASE NUMPAD>;
             COMBO_HOOK
         };
         combo_rpar {
             timeout-ms = <COMBO_TERM_FAST>;
             bindings = <&hmr_rpar_gt LA(LCTRL) 0>;
             key-positions = <RM2 RM3>;
+            layers = <BASE NUMPAD>;
             COMBO_HOOK
         };
-        combo_lbkt_lbrc {
+        combo_lt {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp LT>;
+            key-positions = <RM1 RM2>;
+            layers = <NAVI>;
+            COMBO_HOOK
+        };
+        combo_gt {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp GT>;
+            key-positions = <RM2 RM3>;
+            layers = <NAVI>;
+            COMBO_HOOK
+        };
+        combo_lbkt {
             timeout-ms = <COMBO_TERM_FAST>;
             bindings = <&kp LBKT>;
             key-positions = <RB1 RB2>;
+            layers = <BASE NUMPAD>;
             COMBO_HOOK
         };
-        combo_rbkt_rbrc {
+        combo_rbkt {
             timeout-ms = <COMBO_TERM_FAST>;
             bindings = <&kp RBKT>;
             key-positions = <RB2 RB3>;
+            layers = <BASE NUMPAD>;
+            COMBO_HOOK
+        };
+        combo_lbrc {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp LBRT>;
+            key-positions = <RB1 RB2>;
+            layers = <NAVI>;
+            COMBO_HOOK
+        };
+        combo_rbrc {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp RBRT>;
+            key-positions = <RB2 RB3>;
+            layers = <NAVI>;
             COMBO_HOOK
         };
     };
