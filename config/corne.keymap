@@ -95,26 +95,51 @@
             compatible = "zmk,behavior-hold-tap";
             label = "hmr_lpar_lt";
             #binding-cells = <2>;
-            flavor = "balanced"; 
-            tapping-term-ms = <280>; 
-            quick-tap-ms = <QUICK_TAP_MS>; 
-            global-quick-tap-ms = <150>; 
-            bindings = <&kp>, <&lpar_lt>; 
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            global-quick-tap-ms = <150>;
+            bindings = <&kp>, <&lpar_lt>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release; 
+            hold-trigger-on-release;
         };
 
         hmr_rpar_gt: hmr_rpar_gt {
             compatible = "zmk,behavior-hold-tap";
             label = "hmr_rpar_gt";
             #binding-cells = <2>;
-            flavor = "balanced"; 
-            tapping-term-ms = <280>; 
-            quick-tap-ms = <QUICK_TAP_MS>; 
-            global-quick-tap-ms = <150>; 
-            bindings = <&kp>, <&rpar_gt>; 
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            global-quick-tap-ms = <150>;
+            bindings = <&kp>, <&rpar_gt>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release; 
+            hold-trigger-on-release;
+        };
+
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "hml";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            global-quick-tap-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
+            hold-trigger-on-release;
+        };
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "hmr";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            global-quick-tap-ms = <150>; 
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
+            hold-trigger-on-release;
         };
     };
     
@@ -123,10 +148,11 @@
 
         default_layer {
             bindings = <
-  &gresc   &kp PL_Q  &kp PL_W  &kp PL_E  &kp PL_R      &kp PL_T    &kp PL_Y  &kp PL_U  &kp PL_I  &kp PL_O  &kp PL_P  &bspc_del
-  &kp TAB  &kp PL_A  &kp PL_S  &kp PL_D  &kp PL_F      &kp PL_G    &kp PL_H  &kp PL_J  &kp PL_K  &kp PL_L  &kp SEMI    &kp SQT
-&td_shift  &kp PL_Z  &kp PL_X  &kp PL_C  &kp PL_V      &kp PL_B    &kp PL_N  &kp PL_M  &kp COMMA  &kp DOT  &kp FSLH   &sk RALT
-                         &sk LCTRL  MO_TOG(NAVI)   &kp LEFT_GUI    &kp SPACE  MO_TOG(NUMPAD)   &kp RET
+  &gresc   &kp PL_Q       &kp PL_W       &kp PL_E         &kp PL_R        &kp PL_T        &kp PL_Y  &kp PL_U          &kp PL_I         &kp PL_O        &kp PL_P        &bspc_del
+  &kp TAB  &kp PL_A       &kp PL_S       &kp PL_D         &kp PL_F        &kp PL_G        &kp PL_H  &kp PL_J          &kp PL_K         &kp PL_L        &kp SEMI          &kp SQT
+  &kp TAB  &hml LGUI PL_A &hml LALT PL_S &hml LCTRL PL_D  &hml LSHFT PL_F &kp PL_G        &kp PL_H  &hmr RSHIFT PL_J  &hmr RCTRL PL_K  &hmr RALT PL_L  &hmr RGUI SEMI    &kp SQT
+&td_shift  &kp PL_Z       &kp PL_X       &kp PL_C         &kp PL_V        &kp PL_B        &kp PL_N  &kp PL_M          &kp COMMA        &kp DOT         &kp FSLH         &sk RALT
+                                            &sk LCTRL  MO_TOG(NAVI)   &kp LEFT_GUI        &kp SPACE  MO_TOG(NUMPAD)   &kp RET
             >;
         };
 
