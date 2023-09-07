@@ -20,22 +20,13 @@
 #define SYMBOLS 3
 #define CONTROL 4
 
-#undef COMBO_HOOK
-#define COMBO_HOOK global-quick-tap-ms = <150>;
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // left hand
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 LB5  // right hand
+#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                      // thumbs
 
-#define COMBO_TERM_FAST 18
-#define COMBO_TERM_SLOW 30
+#define QUICK_TAP_MS 175
 
-/ {
-    combos {
-        compatible = "zmk,combos";
-        combo_at {
-            timeout-ms = <COMBO_TERM_SLOW>;
-            bindings = <&kp AT>;
-            key-positions = <LT3 LM3>;
-        };
-    };
-};
+#include "combos.dtsi"
 
 / {
     behaviors {
@@ -81,7 +72,48 @@
             bindings = <&kp F8>, <&tog CONTROL>;
             mods = <(MOD_LSFT)>;
         };
+
+        // tap: left-parenthesis | shft + tap: less-than
+        lpar_lt: lpar_lt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "lpar_lt";
+            bindings = <&kp LPAR>, <&kp LT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // tap: right-parenthesis | shft + tap: less-than
+        rpar_gt: rpar_gt {
+            compatible = "zmk,behavior-mod-morph";
+            label = "rpar_gt";
+            bindings = <&kp RPAR>, <&kp GT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
         
+        hmr_lpar_lt: hmr_lpar_lt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "hmr_lpar_lt";
+            #binding-cells = <2>;
+            flavor = "balanced"; 
+            tapping-term-ms = <280>; 
+            quick-tap-ms = <QUICK_TAP_MS>; 
+            global-quick-tap-ms = <150>; 
+            bindings = <&kp>, <&lpar_lt>; 
+            hold-trigger-key-positions = KEYS_L THUMBS; 
+            hold-trigger-on-release; 
+        };
+
+        hmr_rpar_gt: hmr_rpar_gt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "hmr_rpar_gt";
+            #binding-cells = <2>;
+            flavor = "balanced"; 
+            tapping-term-ms = <280>; 
+            quick-tap-ms = <QUICK_TAP_MS>; 
+            global-quick-tap-ms = <150>; 
+            bindings = <&kp>, <&rpar_gt>; 
+            hold-trigger-key-positions = KEYS_L THUMBS; 
+            hold-trigger-on-release; 
+        };
     };
     
     keymap {
@@ -126,7 +158,7 @@
         controol_layer {
             bindings = <
 &to 0   &none         &none         &none         &none           &bt BT_CLR       &none  &none  &none  &none  &none  &none
-&none   &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5       &none  &none  &none  &none  &none  &none
+&none   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4       &none  &none  &none  &none  &none  &none
 &none   &none         &none         &out OUT_USB  &out OUT_BLE         &none       &none  &none  &none  &none  &none  &none
                                                         &trans &trans &trans       &trans &trans &trans
             >;
