@@ -33,6 +33,10 @@
 #include "combos.dtsi"
 #include "mouse.dtsi"
 
+&caps_word {
+    /delete-property/ ignore-modifiers;
+};
+
 / {
     behaviors {
         bspc_del: backspace_delete {
@@ -51,6 +55,14 @@
             tapping-term-ms = <400>;
             bindings = <&sk LSHFT>, <&caps_word>;
         };
+
+        smart_shift: smart_shift {
+            compatible = "zmk,behavior-mod-morph";
+            label = "smart_shift";
+            #binding-cells = <0>;
+            bindings = <&sk LSHFT>, <&caps_word>;
+            mods = <(MOD_LSFT)>;
+        }
 
         mo_tog: behavior_mo_tog {
             compatible = "zmk,behavior-hold-tap";
@@ -162,10 +174,10 @@
 
         default_layer {
             bindings = <
-  &gresc   &kp PL_Q       &kp PL_W       &kp PL_E         &kp PL_R        &kp PL_T        &kp PL_Y  &kp PL_U          &kp PL_I         &kp PL_O        &kp PL_P        &bspc_del
+  &kp ESC &kp PL_Q       &kp PL_W        &kp PL_E         &kp PL_R        &kp PL_T        &kp PL_Y  &kp PL_U          &kp PL_I         &kp PL_O        &kp PL_P        &bspc_del
   &kp TAB  &hml LGUI PL_A &hml LALT PL_S &hml LCTRL PL_D  &hml LSHFT PL_F &kp PL_G        &kp PL_H  &hmr RSHIFT PL_J  &hmr RCTRL PL_K  &hmr RALT PL_L  &hmr RGUI SEMI    &kp SQT
-&td_shift  &kp PL_Z       &kp PL_X       &kp PL_C         &kp PL_V        &kp PL_B        &kp PL_N  &kp PL_M          &kp COMMA        &kp DOT         &kp FSLH         &sk RALT
-                                            &sk LCTRL  MO_TOG(NAVI)   &kp LEFT_GUI        &kp SPACE  MO_TOG(NUMPAD)   &kp RET
+&sk LCTRL  &kp PL_Z       &kp PL_X       &kp PL_C         &kp PL_V        &kp PL_B        &kp PL_N  &kp PL_M          &kp COMMA        &kp DOT         &kp FSLH         &sk RALT
+                                         &smart_shift  MO_TOG(NAVI)   &kp LEFT_GUI        &kp SPACE  MO_TOG(NUMPAD)   &kp RET
             >;
         };
 

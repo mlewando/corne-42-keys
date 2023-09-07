@@ -25,7 +25,7 @@
         combo_cut {
             timeout-ms = <COMBO_TERM_FAST>;
             bindings = <&kp LC(X)>;
-            key-positions = <LT3 LT1>;
+            key-positions = <LB3 LB1>;
             COMBO_HOOK
         };
         combo_copy {
@@ -38,6 +38,12 @@
             timeout-ms = <COMBO_TERM_FAST>;
             bindings = <&kp LS(INS)>;
             key-positions = <LB2 LB1>;
+            COMBO_HOOK
+        };
+        combo_return {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp RETURN>;
+            key-positions = <LT3 LT2>;
             COMBO_HOOK
         };
 
