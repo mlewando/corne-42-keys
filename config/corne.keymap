@@ -13,6 +13,7 @@
 
 #define MO_TOG(layer) &mo_tog layer layer
 #define SL_TOG(layer) &sl_tog layer layer
+#define SMART_NUM &smart_num NUMPAD 0
 
 #define BASE 0
 #define NUMPAD 1
@@ -35,6 +36,10 @@
 
 &caps_word {
     /delete-property/ ignore-modifiers;
+};
+&num_word {  // num-word, requires PR #1451
+    layers = <NUMPAD>;
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
 };
 
 / {
@@ -167,6 +172,23 @@
             ignored-key-positions = <LT1 LT3 RT1 RT2 RT3 RM1 RM2 RM3 RH0 RH1>;
             ignored-layers = <MOUSE>;
         };
+
+        smart_num: smart_num {
+            compatible = "zmk,behavior-hold-tap";
+            label = "smart_num";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            bindings = <&mo>, <&num_dance>;
+        };
+        num_dance: num_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "num_dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&num_word>, <&sl NUMPAD>;  // reverse this for sticky-num on single tap
+        };
     };
     
     keymap {
@@ -177,7 +199,7 @@
   &kp ESC &kp PL_Q       &kp PL_W        &kp PL_E         &kp PL_R        &kp PL_T        &kp PL_Y  &kp PL_U          &kp PL_I         &kp PL_O        &kp PL_P        &bspc_del
   &kp TAB  &hml LGUI PL_A &hml LALT PL_S &hml LCTRL PL_D  &hml LSHFT PL_F &kp PL_G        &kp PL_H  &hmr RSHIFT PL_J  &hmr RCTRL PL_K  &hmr RALT PL_L  &hmr RGUI SEMI    &kp SQT
 &sk LCTRL  &kp PL_Z       &kp PL_X       &kp PL_C         &kp PL_V        &kp PL_B        &kp PL_N  &kp PL_M          &kp COMMA        &kp DOT         &kp FSLH         &sk RALT
-                                         &smart_shift  MO_TOG(NAVI)   &kp LEFT_GUI        &kp SPACE  MO_TOG(NUMPAD)   &kp RET
+                                         &smart_shift  MO_TOG(NAVI)   &kp LEFT_GUI        &kp SPACE SMART_NUM   &kp RET
             >;
         };
 
