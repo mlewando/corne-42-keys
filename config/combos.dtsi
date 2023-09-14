@@ -43,7 +43,7 @@
         combo_return {
             timeout-ms = <COMBO_TERM_FAST>;
             bindings = <&kp RET>;
-            key-positions = <LT3 LT2>;
+            key-positions = <LT2 LT1>;
             COMBO_HOOK
         };
 
