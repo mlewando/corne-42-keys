@@ -28,6 +28,7 @@
 
 #define XXX &none
 #define ___ &trans
+#define KM_MOUSE_CENTER RA(RG(S))
 
 #define QUICK_TAP_MS 175
 
@@ -241,9 +242,9 @@
 
         mouse_layer {
             bindings = <
-&to 0  ___   ___   ___   ___   ___       ___     U_WH_D  U_MS_U  U_WH_U  ___   ___
-___    ___   ___   ___   ___   ___       ___     U_MS_L  U_MS_D  U_MS_R  ___   ___
-___    ___   ___   ___   ___   ___       ___     ___     ___     ___     ___   ___
+&to 0  ___   ___   ___   ___   ___       ___     U_WH_D      U_MS_U             U_WH_U  ___   ___
+___    ___   ___   ___   ___   ___       ___     U_MS_L      U_MS_D             U_MS_R  ___   ___
+___    ___   ___   ___   ___   ___       ___     ___     &kp KM_MOUSE_CENTER    ___     ___   ___
                    ___   ___   ___       U_BTN2  U_BTN1  ___
             >;
         };
