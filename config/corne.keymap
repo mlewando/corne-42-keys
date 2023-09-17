@@ -44,6 +44,20 @@
 };
 
 / {
+    macros {
+        arrow_macro: arrow_macro {
+            label = "ZM_zed_em_kay";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            
+            wait-ms = <40>;
+            tap-ms = <40>;
+            bindings
+                = <&kp KP_EQUAL &kp GREATER_THAN >
+                ;
+        };
+    }
+
     behaviors {
         bspc_del: backspace_delete {
             compatible = "zmk,behavior-mod-morph";
@@ -66,7 +80,7 @@
             compatible = "zmk,behavior-mod-morph";
             label = "smart_shift";
             #binding-cells = <0>;
-            bindings = <&sk LSHFT>, <&caps_word>;
+            bindings = <&sk LSHFT>, <&caps_aword>;
             mods = <(MOD_LSFT)>;
         };
 
@@ -164,7 +178,7 @@
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
         };
-
+// CMD should work on mouse layer
         smart_mouse: smart_mouse {
             compatible = "zmk,behavior-tri-state";
             label = "smart_mouse";
@@ -200,15 +214,15 @@
      &kp ESC &kp PL_Q       &kp PL_W        &kp PL_E         &kp PL_R        &kp PL_T        &kp PL_Y  &kp PL_U          &kp PL_I         &kp PL_O        &kp PL_P        &bspc_del
      &kp TAB  &hml LGUI PL_A &hml LALT PL_S &hml LCTRL PL_D  &hml LSHFT PL_F &kp PL_G        &kp PL_H  &hmr RSHIFT PL_J  &hmr RCTRL PL_K  &hmr RALT PL_L  &hmr RGUI SEMI    &kp SQT
 &smart_shift  &kp PL_Z       &kp PL_X       &kp PL_C         &kp PL_V        &kp PL_B        &kp PL_N  &kp PL_M          &kp COMMA        &kp DOT         &kp FSLH         &sk RALT
-                                            &smart_shift  MO_TOG(NAVI)   &kp LEFT_GUI        &kp SPACE SMART_NUM   &kp RET
+                                            &sl SYMBOLS      MO_TOG(NAVI)   &kp LEFT_GUI        &kp SPACE SMART_NUM   &kp RET
             >;
         };
 
         numad {
             bindings = <
-&to 0   &trans  &trans  &trans  &trans     &trans    ___  &kp N7  &kp N8  &kp N9   ___     &trans
-&trans  &trans  &trans  &kp DOT &kp COMMA  &trans    ___  &kp N4  &kp N5  &kp N6   ___     &trans
-&trans  &trans  &trans  &trans  &trans     &trans    ___  &kp N1  &kp N2  &kp N3   &kp N0     ___
+&to 0   &trans  &trans  &trans  &trans     &trans    ___  &kp N7  &kp N8  &kp N9   ___      &trans
+&trans  &trans  &trans  &kp DOT &kp COMMA  &trans    ___  &kp N4  &kp N5  &kp N6   &kp DOT  &trans
+&trans  &trans  &trans  &trans  &trans     &trans    ___  &kp N1  &kp N2  &kp N3   &kp N0      ___
                         &trans  &trans     &trans    &trans  &trans  &trans
             >;
         };
@@ -224,10 +238,10 @@
 
         symbols {
             bindings = <
-&to 0   &kp EXCL  &kp AT    &kp HASH  &kp DOLLAR  &kp PERCENT        &kp CARET  &kp AMPS   &kp ASTERISK  &kp LPAR        &kp RPAR     &trans
-&trans  &none     &kp LBRC  &kp RBRC  &kp LBKT       &kp RBKT        &kp LPAR   &kp RPAR   &kp SLASH     &kp BACKSLASH   &kp SLASH  &kp PIPE
-&trans  &trans    &trans    &trans    &trans           &trans        &trans     &trans     &trans        &trans          &trans       &trans
-                        &trans  &trans     &trans    &trans  &trans  &trans
+&to 0  ___   ___   ___   ___   ___       ___   ___            ___   ___   ___   ___
+___    ___   ___   ___   ___   ___       ___   &arrow_macro   ___   ___   ___   ___
+___    ___   ___   ___   ___   ___       ___   ___            ___   ___   ___   ___
+                   ___   ___   ___       ___   ___            ___
             >;
         };
 
