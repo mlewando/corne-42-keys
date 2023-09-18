@@ -56,7 +56,7 @@
                 = <&kp KP_EQUAL &kp GREATER_THAN >
                 ;
         };
-    }
+    };
 
     behaviors {
         bspc_del: backspace_delete {
