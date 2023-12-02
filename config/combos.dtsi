@@ -46,6 +46,12 @@
             key-positions = <LT2 LT1>;
             COMBO_HOOK
         };
+        combo_return_right {
+            timeout-ms = <COMBO_TERM_FAST>;
+            bindings = <&kp RET>;
+            key-positions = <RT2 RT1>;
+            COMBO_HOOK
+        };
 
         // left hand symbols
         combo_exclamation {
